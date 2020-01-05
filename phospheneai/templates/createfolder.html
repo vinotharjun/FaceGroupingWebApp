@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> 
+    </script> 
+    <script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+    </script> 
+    <script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+    </script> 
+
+
+  
+<style>
+  @media (prefers-color-scheme:dark) {
+          body{
+              background-color: #1c1c1e;
+              color:#fefefe;
+          }
+          a{
+              color:#5fa9ee;
+          }
+      } 
+    div.card {
+        margin: auto;
+  width: 50%;
+        height: 50%;
+  border: 5px solid lightblue;
+  top: 50%;
+    position: relative;
+  display: block;
+  transform: translate(10%, 80%)
+    }
+</style> 
+<div id="card" class="card" style="width: 28rem;">
+    <div class="card-body">
+     <center> <h4 class="card-subtitle mb-2 text-muted">Create Album</h4></center>
+     <br>
+     <form action="{% url 'createfolder' %}" method="POST">
+     {% csrf_token %}
+            <div>
+            </div>
+            <div class="col-auto">
+                    <label class="sr-only" for="inlineFormInputGroup">Folder Name</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                      </div>    
+                      <input type="text" class="form-control" name="foldername" placeholder="Folder Name" required>
+                               </div>
+                               <label class="sr-only" for="inlineFormInputGroup">Folder Name</label>    
+                               <br>
+                               <center>
+                            <div id="button">
+                            <button type="submit" class="btn btn-primary">Create</button> 
+                            </div>
+                          </center>                 
+            </form>
+    </div>
+  </div>
+{% endblock content %}

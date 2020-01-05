@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Phoenicorn</title>
+   <style>
+        @media (prefers-color-scheme:dark) {
+                body{
+                    background-color: #1c1c1e;
+                    color:#fefefe;
+                }
+                a{
+                    color:#5fa9ee;
+                }
+            }
+            div.images {
+                padding: 50px;
+                display: inline-block;
+            }
+            
+            img.img1 {
+                padding-left: 10px;
+            }
+            img.img2{
+                padding-left: 150px;
+            }
+            img.img3{
+                padding-left: 175px;
+            }
+            img.img4{
+                padding-left: 200px;
+            }
+            .row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+   </style> 
+</head>
+<body>         
+        <div class="jumbotron jumbotron-fluid" style="background: url('/temp/clusterimg.png');">
+                <div class="container">
+                  <center><h1 class="display-4">Cluster Images</h1></center>
+                </div>
+              </div>
+              
+        <div >
+            <center><h2 style="color: #5fa9ee;"> Benefits </h2></center>
+            <div class="images" style="display: inline-block;"> 
+            <img class="img1" src="/temp/intelligentcluster.png">
+            <img class="img2" src="/temp/fastandacc.png">
+            <img class="img3" src="/temp/albums.png">
+            <img class="img4" src="/temp/results.png">
+            </div>
+        </div>
+        <h3>Intelligent Clustering&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fast and Accurate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlimited Number of FaceAlbums&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple Awards</h3>                                 
+        <!-- <div class="row">
+                <div class="column">
+                        {% for key,value in temp.items %}
+                            {% for image in value %}
+                                <img align = "middle" class="im" style="width: 5cm;" src= " {{ image }}" alt=""/>
+                            {% endfor %}
+                        {% endfor %}
+                </div>
+        </div>         -->
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="..." alt="First slide">
+                  </div>
+                  
+                </div>
+              </div>
+</body>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+{% get_media_prefix as MEDIA_URL %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phoenicorn</title>
+    <style>
+        @media (prefers-color-scheme:dark) {
+                body{
+                    background-color: #1c1c1e;
+                    color:#fefefe;
+                }
+                a{
+                    color:#5fa9ee;
+                }
+            } 
+          div.card {
+              margin: auto;
+        width: 50%;
+              height: 50%;
+        border: 5px solid lightblue;
+        top: 50%;
+          position: relative;
+        display: block;
+        transform: translate(10%, 80%)
+          }
+          img.im{
+            
+        margin-left: 70px;
+        margin-right: 70px;
+        width: 50%;
+                }
+                body {
+  font-family: Arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display:none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+        
+      </style>    
+</head>
+<body>
+
+{% for key,value in temp.items %}
+    {% for image in value%}
+      {% if key == 'id' %}
+        <img id = {{image}} onclick="change(this)" class="im" style="width:10% ;" src= " {{ image }}" alt=""/>
+      {% endif %}
+      {% endfor %}
+{% endfor %}
+
+{% for key,value in temp.items %}
+  {% if key != 'id' %}  
+    <div class={{key}} style="display: none;">
+        <center><h1>{{key}}</h1></center>
+            {% for image in value %}
+          <img id = {{image}}  class="im" style="width: 5cm;" src= " {{ image }}" alt=""/>
+            {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+<!-- <div class="row-lg-4">
+    {% for key,value in temp.items %}  
+  <div class="col">
+                
+                  <h1> <center> {{key}} </h1> </center>
+                            {% for image in value %}
+                            
+                              <img  class="im" style="width: 5cm;" src= " {{ image }}" alt=""/>
+                           {% endfor %}
+      </div>                  
+                   {% endfor %}
+  </div> -->
+   {% for key,value in images.items %}
+    {%  for image in value %}
+    <img  class="im" style="width: 5cm;" src= " {{ image }}" alt=""/>
+    {% endfor %}
+   {% endfor %}             
+</body>
+
+<script>
+  function change(id)
+  {
+    clustervalue = 1;
+    while (1)
+    {
+      var x = document.getElementsByClassName('cluster'+clustervalue);
+      if(x.length>0)
+      {
+        for (var i = 0; i < x.length; i++) {
+          x[i].style.display = 'none';
+          
+      }
+      clustervalue+=1;
+      }
+      else{
+        break;
+      }
+      }
+    
+  let cluster = id.id;
+  cluster = cluster.split('.')
+  cluster = cluster[0].split('/')
+  cluster = cluster[3]
+  cluster = cluster.replace(/\D/g,'');
+
+  len = cluster[0].length;
+  cluster = 'cluster'+cluster[len-1]
+      
+  var x = document.getElementsByClassName(cluster);
+  var i;
+for (i = 0; i < x.length; i++) {
+    x[i].style.display = 'block';
+}
+  }
+</script>  
+</html>
+{% endblock %}
