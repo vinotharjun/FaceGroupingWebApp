@@ -1,4 +1,4 @@
-#                    CLUSTER IMAGES
+#                    Face grouping APIS (document.docx for api reference)
 
 
 ### INITIAL SETUP:
